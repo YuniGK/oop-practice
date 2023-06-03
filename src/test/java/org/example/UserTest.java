@@ -14,7 +14,8 @@ class UserTest {
         User user = new User();
 
         //when
-        user.initPassword(new CorrectFixedPasswordGenerator());
+        //user.initPassword(new CorrectFixedPasswordGenerator());
+        user.initPassword(() -> "aabbccdd");
         /*램덤으로 값이 만들어져 결과값이 성공 또는 실패했었다.
         값에 CorrectFixedPasswordGenerator 추가하며 일정한 값이 들어와 결과값도 동일하다.*/
 
@@ -29,7 +30,8 @@ class UserTest {
         User user = new User();
 
         //when
-        user.initPassword(new WrongFixedPasswordGenerator());
+        //user.initPassword(new WrongFixedPasswordGenerator());
+        user.initPassword(()->"abc");
 
         //then
         assertThat(user.getPassword()).isNull();
